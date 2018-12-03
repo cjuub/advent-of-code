@@ -18,7 +18,7 @@ with open('input.txt') as fp:
 print(ans)
 
 ans = 0
-found_freqs = []
+found_freqs = set()
 while True:
     with open('input.txt') as fp:
         for line in fp:
@@ -31,5 +31,5 @@ while True:
                 print(ans)
                 exit(0)
 
-            found_freqs.append(ans)
+            found_freqs.add(ans)
 
