@@ -82,6 +82,13 @@ regs = [0, 0, 0, 0, 0, 0] # part 1
 # regs = [1, 0, 0, 0, 0, 0] # part 2
 
 while True:
+    # decompiled of the heavy calc loop:
+    # while r5 <= r2
+    #     if r3 * r5 == r2
+    #         r0 += r3
+    #     else
+    #         r5++
+    #
     # this can be simplified by using modulo instead.
     # modify the code to skip the above decompiled calc and do the one below instead.
     if regs[ip] == 3:
