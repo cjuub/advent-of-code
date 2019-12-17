@@ -3,21 +3,11 @@
 with open('input.txt') as fp:
     lines = fp.readlines()
 
-# lines[0] = '12345678'
-
-
 base_p = [0, 1, 0, -1]
+inp = lines[0].strip()
 
-inp = lines[0].strip() * 10
-
-seen = {}
-
-for phase in range(1000):
-    print(inp)
+for phase in range(100):
     new_list = []
-
-    if inp in seen.keys():
-        inp = seen[inp]
 
     for k in range(len(inp)):
         p = []
@@ -35,9 +25,21 @@ for phase in range(1000):
             j += 1
         new_list.append(str(new_d)[-1])
 
-    # print(new_list)
-    seen[inp] = ''.join(new_list)
     inp = ''.join(new_list)
 
-print(''.join(new_list))
+print('Part 1: ' + inp[:8])
 
+inp = lines[0].strip() * 10000
+inp = inp[5976521:]
+inp = [int(i) for i in inp]
+
+for phase in range(100):
+    inp_new = []
+    sum_prev = 0
+    for i in range(len(inp)):
+        sum_prev += inp[-i - 1]
+        sum_prev %= 10
+        inp_new.append(sum_prev)
+    inp = list(reversed(inp_new))
+
+print('Part 2: ' + ''.join([str(x) for x in inp[:8]]))
